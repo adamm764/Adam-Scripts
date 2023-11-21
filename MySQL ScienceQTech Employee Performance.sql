@@ -2,31 +2,6 @@
 CREATE DATABASE project;
 CREATE DATABASE employee;
 
--- create the two tables in the Project database
-CREATE TABLE project.Data_Science_Team
-(
-	EMP_ID varchar(15) PRIMARY KEY,
-	FIRST_NAME varchar(50),
-	LAST_NAME varchar(50),
-	GENDER varchar(1),
-	ROLE varchar(100),
-	DEPT varchar(15),
-	EXP int,
-	COUNTRY varchar(20),
-	CONTINENT varchar(30)
-);
-
-CREATE TABLE project.Project_Table
-(
-	PROJ_ID varchar(4),
-    PROJ_NAME varchar(100),
-    DOMAIN varchar(20),
-    START_DATE DATE,
-    CLOSURE_DATE DATE,
-    DEV_QTR varchar(2),
-    STATUS varchar(15)
-);
-
 -- create a table for employee records in employee database
 CREATE TABLE employee.employee_records_table
 (
@@ -42,6 +17,32 @@ CREATE TABLE employee.employee_records_table
     SALARY int,
     EMP_RATING int,
     MANAGER_ID varchar(4)
+);
+
+-- create the two tables in the Project database
+CREATE TABLE project.Data_Science_Team
+(
+	EMP_ID varchar(4) PRIMARY KEY,
+	FIRST_NAME varchar(50),
+	LAST_NAME varchar(50),
+	GENDER varchar(1),
+	ROLE varchar(100),
+	DEPT varchar(15),
+	EXP int,
+	COUNTRY varchar(20),
+	CONTINENT varchar(30),
+	FOREIGN KEY (EMP_ID) REFERENCES employee.employee_records_table(EMP_ID)
+);
+
+CREATE TABLE project.Project_Table
+(
+	PROJ_ID varchar(4),
+    PROJ_NAME varchar(100),
+    DOMAIN varchar(20),
+    START_DATE DATE,
+    CLOSURE_DATE DATE,
+    DEV_QTR varchar(2),
+    STATUS varchar(15)
 );
 
 -- insert data into the project database
